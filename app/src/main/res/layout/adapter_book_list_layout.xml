@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/listObject"
+    android:clickable="true"
+    android:longClickable="true"
+    android:focusable="false"
+    android:background="@drawable/selector">
+
+    <LinearLayout
+        android:id="@+id/linearText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_margin="5dp"
+            android:id="@+id/textViewBook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/book_name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/author_name"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/amazonButtonView"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
+
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/amazonButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/search_by_author"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"/>
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/amazonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/get_on_amazon"
+            android:gravity="center"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

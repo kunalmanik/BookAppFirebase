@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BookAppFirebase</string>
+    <string name="author_name">Author Name</string>
+    <string name="book_name">Book Name</string>
+    <string name="get_on_amazon">Get on Amazon</string>
+    <string name="search_by_author">Search by Author</string>
+</resources>
