@@ -49,7 +49,7 @@ public class MainGenreActivity extends AppCompatActivity {
                 String str = genreStrings[i];
                 Toast.makeText(MainGenreActivity.this, str, Toast.LENGTH_SHORT).show();
                 Log.i("THIS IS SAMPLE : ", str);
-                Intent intent = new Intent(MainGenreActivity.this, MainActivity.class);
+                Intent intent = new Intent(MainGenreActivity.this, SubGenreActivity.class);
                 intent.putExtra("GENRE NAME", str);
                 startActivity(intent);
             }
