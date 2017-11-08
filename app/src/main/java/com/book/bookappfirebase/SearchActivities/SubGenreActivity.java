@@ -61,9 +61,6 @@ public class SubGenreActivity extends AppCompatActivity {
                 case "Fantasy" :
                     break;
 
-                case "Fiction" :
-                    break;
-
                 case "History" :
                     break;
 
