@@ -1,5 +1,6 @@
 package com.book.bookappfirebase;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -13,10 +14,11 @@ public class OnSwipeTouchListener implements View.OnTouchListener{
 
     private final GestureDetector gestureDetector;
 
-    public OnSwipeTouchListener (Context ctx){
+    protected OnSwipeTouchListener (Context ctx){
         gestureDetector = new GestureDetector(ctx, new GestureListener());
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
@@ -28,7 +30,8 @@ public class OnSwipeTouchListener implements View.OnTouchListener{
         private static final int SWIPE_VELOCITY_THRESHOLD = 0;
 
         @Override
-        public boolean onDown(MotionEvent e) {
+        public boolean onDown(MotionEvent e)
+        {
             return true;
         }
 

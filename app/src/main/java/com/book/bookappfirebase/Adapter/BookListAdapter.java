@@ -1,5 +1,6 @@
 package com.book.bookappfirebase.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,6 +45,7 @@ public class BookListAdapter extends ArrayAdapter<Books>
         this.booksList = booksList;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -92,6 +94,7 @@ public class BookListAdapter extends ArrayAdapter<Books>
 
         amazonButtonView.setOnTouchListener(new OnSwipeTouchListener(context) {
             @Override
+            @SuppressLint("ClickableViewAccessibility")
             public void onSwipeLeft() {
                 Toast.makeText(context, textViewBook.getText() + "\t" + textViewAuthor.getText(), Toast.LENGTH_SHORT).show();
                 if(amazonButtonView.getVisibility() == View.VISIBLE){
@@ -100,6 +103,7 @@ public class BookListAdapter extends ArrayAdapter<Books>
             }
 
             @Override
+            @SuppressLint("ClickableViewAccessibility")
             public void onSwipeRight() {
                 Toast.makeText(context, textViewBook.getText() + "\t" + textViewAuthor.getText(), Toast.LENGTH_SHORT).show();
                 if(amazonButtonView.getVisibility() == View.VISIBLE){
@@ -107,6 +111,7 @@ public class BookListAdapter extends ArrayAdapter<Books>
                 }
             }
         });
+
 
         amazonButton.setOnClickListener(new View.OnClickListener() {
             @Override
