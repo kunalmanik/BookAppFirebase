@@ -1,7 +1,9 @@
 package com.book.bookappfirebase.searchActivities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,46 +27,46 @@ public class SubGenreActivity extends AppCompatActivity {
 
     ListView subGenreList;
 
-    private String[] genreStringsContemporary = {"Best Contemporary of all Time", "Stand-Alones",
+    String[] genreStringsContemporary = {"Best Contemporary of all Time", "Stand-Alones",
             "Adult Contemporary", "Something from New Authors"};
 
-    private String[] genreStringsFantasy = {"The Best Epic Fantasy", "Strong Female Fantasy Novels",
+    String[] genreStringsFantasy = {"The Best Epic Fantasy", "Strong Female Fantasy Novels",
             "Best Urban Fantasy", "Series-Triologies-Duologies", "Kick-Ass Female characters",
             "Best Fantasy of 21st Century", "Most Interesting Magic System",
             "The Best Fairytales and Retellings", "Angels, Gods and Demons"};
 
-    private String[] genreStringsHistory = {"Most Influencial", "Teen Historical Fiction", "Historical Mystery",
+    String[] genreStringsHistory = {"Most Influencial", "Teen Historical Fiction", "Historical Mystery",
             "Microhistory: Social Histories of Just One Thing", "Best of All Time", "Memoirs by Women",
             "Recommended", "Civil War Books", "Ancient Rome", "Middle Ages", "American History",
             "Tudor England", "Non-Fiction War", "Israel-Palestine Conflict", "Historical Romance" };
 
-    private String[] genreStringsHorror = {"Vampires", "Most Disturbing Books", "Best of Horror Novels",
+    String[] genreStringsHorror = {"Vampires", "Most Disturbing Books", "Best of Horror Novels",
             "Zombies", "Best of Stephen King", "Quality Dark Fiction", "Ghost Stories",
             "Serial Killers", "Darkest Books of All Time", "Not The 'Normal' Paranormal "};
 
-    private String[] genreStringsMystery = {"Must Read Thrillers", "Best Spy Novels", "Best Crime and Mystery",
+    String[] genreStringsMystery = {"Must Read Thrillers", "Best Spy Novels", "Best Crime and Mystery",
             "Best Cozy Mystery Series", "Literary Mysteries", "Best Mysteries of the Decade"};
 
-    private String[] genreStringsNonFic = {"Best of Non-Fiction", "Best Humorous", "Favourite Travel Books",
+    String[] genreStringsNonFic = {"Best of Non-Fiction", "Best Humorous", "Favourite Travel Books",
             "Best Science Books", "Best Unappreciated Books", "Best Biographies",
             "Must Read Non-Fiction" };
 
-    private String[] genreStringsRomance = {"Best Book Boyfriends", "Young Adult", "Best Love Stories",
+    String[] genreStringsRomance = {"Best Book Boyfriends", "Young Adult", "Best Love Stories",
             "College Romance", "Contemporary Romance", "Historical Romance", "All Time Favourite",
             "Paranormal and Romance"};
 
-    private String[] genreStringsSciFi = {"Dystopian and Post-Apocalyptic Fiction", "Best of All Time",
+    String[] genreStringsSciFi = {"Dystopian and Post-Apocalyptic Fiction", "Best of All Time",
             "Kick-Ass Female characters", "Best Books of 21st Century", "Best Steampunk Books",
             "From the new Stars", "Under-Rated Sci-Fi", "Amazon's Must Read Books", "This is the end",
             "Female Protagonist", "Science Fiction and Fantasy"};
 
-    private String[] genreStringsThrillerSuspense = {"Recommended Suspense and Thriller",
+    String[] genreStringsThrillerSuspense = {"Recommended Suspense and Thriller",
             "Romantic Suspense", "Best Technothrillers Ever", "Must Read Thriller",
             "Female Psychological Thriller and Suspense"};
 
-    private String[] genreStringsLeastKnown = {"Must-Knowns"};
+    String[] genreStringsLeastKnown = {"Must-Knowns"};
 
-    private String[] genreStringsSocial = {"Best Feminist Books", "Books on Racism, Sexism and Class",
+    String[] genreStringsSocial = {"Best Feminist Books", "Books on Racism, Sexism and Class",
             "Books White People need to Read", "Books that Frame Thinking"};
 
     @Override
@@ -72,18 +74,23 @@ public class SubGenreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sub_genre_layout);
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                mainGenreStr = null;
-            }
-            else {
-                mainGenreStr = extras.getString("GENRE NAME");
-            }
-        }
-        else {
-            mainGenreStr = (String) savedInstanceState.getSerializable("GENRE NAME");
-        }
+//        if (savedInstanceState == null) {
+//            Bundle extras = getIntent().getExtras();
+//            if(extras == null) {
+//                mainGenreStr = null;
+//            }
+//            else {
+//                mainGenreStr = extras.getString("GENRE NAME");
+//            }
+//        }
+//        else {
+//            mainGenreStr = (String) savedInstanceState.getSerializable("GENRE NAME");
+//        }
+
+        SharedPreferences preferences = getSharedPreferences("GENRE PREF", MODE_PRIVATE);
+        mainGenreStr = preferences.getString("GENRE NAME", null);
+
+        final SharedPreferences sharedPreferences = this.getSharedPreferences("SUBGENRE PREF", MODE_PRIVATE);
 
         if (mainGenreStr != null)
             switch (mainGenreStr)
@@ -150,7 +157,8 @@ public class SubGenreActivity extends AppCompatActivity {
                 Toast.makeText(SubGenreActivity.this, str, Toast.LENGTH_SHORT).show();
                 Log.i("THIS IS SAMPLE : ", str);
                 Intent intent = new Intent(SubGenreActivity.this, MainActivity.class);
-                intent.putExtra("PATH NAME", str);
+                //intent.putExtra("PATH NAME", str);
+                sharedPreferences.edit().putString("SUBGENRE", str).apply();
                 startActivity(intent);
             }
         });

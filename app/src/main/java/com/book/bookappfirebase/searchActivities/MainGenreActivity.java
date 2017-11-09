@@ -1,6 +1,8 @@
 package com.book.bookappfirebase.searchActivities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +36,8 @@ public class MainGenreActivity extends AppCompatActivity {
 
         MainGenreListAdapter adapter = new MainGenreListAdapter(MainGenreActivity.this, genreStrings);
 
+        final SharedPreferences preferences = this.getSharedPreferences("GENRE PREF", Context.MODE_PRIVATE);
+
         //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, genreStrings);
         mainGenreList.setAdapter(adapter);
 
@@ -44,7 +48,8 @@ public class MainGenreActivity extends AppCompatActivity {
                 Toast.makeText(MainGenreActivity.this, str, Toast.LENGTH_SHORT).show();
                 Log.i("THIS IS SAMPLE : ", str);
                 Intent intent = new Intent(MainGenreActivity.this, SubGenreActivity.class);
-                intent.putExtra("GENRE NAME", str);
+                //intent.putExtra("GENRE NAME", str);
+                preferences.edit().putString("GENRE NAME", str).apply();
                 startActivity(intent);
             }
         });

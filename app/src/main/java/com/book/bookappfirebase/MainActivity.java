@@ -1,5 +1,6 @@
 package com.book.bookappfirebase;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,19 +31,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String pathStr;
+//
+//        if (savedInstanceState == null) {
+//            Bundle extras = getIntent().getExtras();
+//            if(extras == null) {
+//                pathStr = null;
+//            }
+//            else {
+//                pathStr = extras.getString("PATH NAME");
+//            }
+//        }
+//        else {
+//            pathStr = (String) savedInstanceState.getSerializable("PATH NAME");
+//        }
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                pathStr = null;
-            }
-            else {
-                pathStr = extras.getString("PATH NAME");
-            }
-        }
-        else {
-            pathStr = (String) savedInstanceState.getSerializable("PATH NAME");
-        }
+        SharedPreferences preferences = this.getSharedPreferences("SUBGENRE PREF", MODE_PRIVATE);
+        pathStr = preferences.getString("SUBGENRE", null);
 
         try {
             databaseReference = FirebaseDatabase.getInstance().getReference(pathStr);
