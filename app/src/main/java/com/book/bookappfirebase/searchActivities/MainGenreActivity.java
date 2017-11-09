@@ -1,4 +1,4 @@
-package com.book.bookappfirebase.SearchActivities;
+package com.book.bookappfirebase.searchActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,17 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.book.bookappfirebase.Adapter.MainGenreListAdapter;
-import com.book.bookappfirebase.MainActivity;
 import com.book.bookappfirebase.R;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 
 /**
@@ -26,8 +20,8 @@ import java.util.List;
 
 public class MainGenreActivity extends AppCompatActivity {
 
-    String[] genreStrings = {"Contemporary", "Fantasy", "Fiction", "History", "Horror", "Mystery", "Non-Fiction",
-            "Paranormal", "Romance", "Science Fiction", "Suspense", "Thriller", "Young-Adult"};
+    String[] genreStrings = {"Contemporary", "Fantasy", "History", "Horror", "Least Knowns", "Mystery",
+            "Non-Fiction", "Romance", "Science Fiction", "Social Issues", "Thriller and Suspense"};
 
     ListView mainGenreList;
 

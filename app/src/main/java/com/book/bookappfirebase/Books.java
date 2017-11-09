@@ -6,23 +6,23 @@ package com.book.bookappfirebase;
 
 public class Books
 {
-    private String book;
+    private String name;
     private String author;
 
     public Books(){}
 
-    public Books(String book, String author)
+    public Books(String name, String author)
     {
-        this.book = book;
+        this.name = name;
         this.author = author;
     }
 
-    public String getBook() {
-        return book;
+    public String getName() {
+        return name;
     }
 
-    public void setBook(String book) {
-        this.book = book;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthor() {

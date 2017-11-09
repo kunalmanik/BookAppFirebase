@@ -61,7 +61,7 @@ public class BookListAdapter extends ArrayAdapter<Books>
 
         Books books = booksList.get(position);
 
-        textViewBook.setText(books.getBook());
+        textViewBook.setText(books.getName());
         textViewAuthor.setText(books.getAuthor());
 
 //        listObject.setOnTouchListener(new OnSwipeTouchListener(context) {

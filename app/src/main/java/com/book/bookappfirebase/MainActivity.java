@@ -2,6 +2,7 @@ package com.book.bookappfirebase;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,15 +23,33 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     ListView listViewBooks;
     List<Books> bookList;
-    BookListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String pathStr;
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Science Fiction/Dystopian and Post-Apocalyptic Fiction");
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                pathStr = null;
+            }
+            else {
+                pathStr = extras.getString("PATH NAME");
+            }
+        }
+        else {
+            pathStr = (String) savedInstanceState.getSerializable("PATH NAME");
+        }
+
+        try {
+            databaseReference = FirebaseDatabase.getInstance().getReference(pathStr);
+        }
+        catch (Exception ex) {
+            Log.e("ERROR", ex.toString());
+        }
 
         listViewBooks = findViewById(R.id.userList);
 
@@ -112,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
 
-
                 listViewBooks.setAdapter(adapter);
 
                 bookList.clear();
@@ -136,12 +154,5 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Please Try again later", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
     }
 }

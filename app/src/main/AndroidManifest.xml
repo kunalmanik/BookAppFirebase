@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".searchActivities.SubGenreActivity">
             <intent-filter>
                 <action android:name="com.book.bookappfirebase.MainActivity" />
 
@@ -18,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SearchActivities.MainGenreActivity">
+        <activity android:name=".searchActivities.MainGenreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +27,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SearchActivities.SubGenreActivity">
+        <activity android:name=".searchActivities.SubGenreActivity"
+            android:parentActivityName=".searchActivities.MainGenreActivity">
             <intent-filter>
-                <action android:name="com.book.bookappfirebase.SearchActivities.SubGenreActivity" />
+                <action android:name="com.book.bookappfirebase.searchActivities.SubGenreActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
