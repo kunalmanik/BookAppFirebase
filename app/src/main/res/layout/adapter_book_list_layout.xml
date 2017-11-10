@@ -6,7 +6,7 @@
     android:id="@+id/listObject"
     android:clickable="true"
     android:longClickable="true"
-    android:focusable="false"
+    android:focusable="true"
     android:background="@drawable/selector">
 
     <LinearLayout

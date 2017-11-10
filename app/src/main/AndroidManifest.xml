@@ -36,6 +36,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".searchActivities.TagActivity"
+            android:parentActivityName=".searchActivities.MainGenreActivity">
+            <intent-filter>
+                <action android:name="com.book.bookappfirebase.searchActivities.TagActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

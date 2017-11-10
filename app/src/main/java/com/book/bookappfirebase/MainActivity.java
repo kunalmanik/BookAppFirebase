@@ -1,5 +1,6 @@
 package com.book.bookappfirebase;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.book.bookappfirebase.Adapter.BookListAdapter;
+import com.book.bookappfirebase.searchActivities.TagActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -158,5 +160,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Please Try again later", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void SearchTags(View view) {
+        startActivity(new Intent(this, TagActivity.class));
     }
 }
