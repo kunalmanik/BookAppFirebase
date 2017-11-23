@@ -1,11 +1,9 @@
 package com.book.bookappfirebase.searchActivities;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -27,19 +25,13 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by kunalmnik95 on 10/11/17.
- */
-
 public class TagActivity extends AppCompatActivity
 {
-
     static ArrayList<String> arrayList = new ArrayList<>();
     ListView tagList;
     WebView webView;
-    Context context;
-    TagListAdapter tagListAdapter;
-    private final static String url = "https://www.goodreads.com/list/tag/genre";
+    protected static TagListAdapter tagListAdapter;
+    protected final static String url = "https://www.goodreads.com/list/tag/genre";
     private final static String redirectURL = "https://www.goodreads.com/list/tag/";
 
     @Override
@@ -50,7 +42,7 @@ public class TagActivity extends AppCompatActivity
         tagList = findViewById(R.id.tagActivityList);
         webView = findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        //webSettings.setJavaScriptEnabled(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
 
@@ -79,39 +71,6 @@ public class TagActivity extends AppCompatActivity
         new ParsePage().execute();
     }
 
-    class ParsePage extends AsyncTask<String, Void, String>
-    {
-        @Override
-        protected String doInBackground(String... strings) {
-
-            Document document;
-            try {
-                document = Jsoup.connect(url).get();
-                Elements elements = document.getElementsByClass("actionLinkLite");
-                for(Element element : elements)
-                {
-                    //Log.i("ELEMENT", element.text());
-                    arrayList.add(element.text());
-                }
-                //Log.d("TEST HTML", document.toString());
-//                for (String str:arrayList
-//                     ) {
-//                    Log.i("TEST", str);
-//                }
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-            return "Executed";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            tagListAdapter.notifyDataSetChanged();
-        }
-    }
-
     @Override
     public void onBackPressed() {
         webView.clearCache(true);
@@ -124,5 +83,38 @@ public class TagActivity extends AppCompatActivity
             webView.setVisibility(View.GONE);
         }
         super.onBackPressed();
+    }
+}
+
+class ParsePage extends AsyncTask<String, Void, String>
+{
+    @Override
+    protected String doInBackground(String... strings) {
+
+        Document document;
+        try {
+            document = Jsoup.connect(TagActivity.url).get();
+            Elements elements = document.getElementsByClass("actionLinkLite");
+            for(Element element : elements)
+            {
+                //Log.i("ELEMENT", element.text());
+                TagActivity.arrayList.add(element.text());
+            }
+            //Log.d("TEST HTML", document.toString());
+//                for (String str:arrayList
+//                     ) {
+//                    Log.i("TEST", str);
+//                }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return "Executed";
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        TagActivity.tagListAdapter.notifyDataSetChanged();
     }
 }

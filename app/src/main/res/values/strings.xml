@@ -4,4 +4,5 @@
     <string name="book_name">Book Name</string>
     <string name="get_on_amazon">Get on Amazon</string>
     <string name="search_by_author">Search by Author</string>
+    <string name="search_by_tag">Search by Tag</string>
 </resources>

@@ -15,11 +15,6 @@ import android.widget.Toast;
 import com.book.bookappfirebase.Adapter.MainGenreListAdapter;
 import com.book.bookappfirebase.R;
 
-
-/**
- * Created by kunalmnik95 on 20/10/17.
- */
-
 public class MainGenreActivity extends AppCompatActivity {
 
     String[] genreStrings = {"Contemporary", "Fantasy", "History", "Horror", "Least Knowns", "Mystery",
@@ -53,5 +48,9 @@ public class MainGenreActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void SearchTags(View view) {
+        startActivity(new Intent(this, TagActivity.class));
     }
 }
