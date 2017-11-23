@@ -42,7 +42,7 @@ public class TagActivity extends AppCompatActivity
         tagList = findViewById(R.id.tagActivityList);
         webView = findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
-        //webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
 
