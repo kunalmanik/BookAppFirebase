@@ -82,7 +82,7 @@ public class TagActivity extends AppCompatActivity
         {
             webView.setVisibility(View.GONE);
         }
-        super.onBackPressed();
+        else super.onBackPressed();
     }
 }
 

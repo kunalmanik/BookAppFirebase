@@ -9,6 +9,8 @@
         android:id="@+id/tagButton"
         android:background="@drawable/round_corners_white"
         android:textColor="@android:color/white"
-        android:padding="10dp" />
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:padding="10sp"/>
 
 </LinearLayout>

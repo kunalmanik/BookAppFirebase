@@ -8,6 +8,9 @@
         android:layout_height="match_parent"
         android:id="@+id/genreButton"
         android:background="@drawable/round_corners"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
         android:padding="10dp" />
 
 </LinearLayout>
